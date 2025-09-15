@@ -44,6 +44,8 @@ builder.Services.AddScoped<IApplicationService, ApplicationService>();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
 builder.Services.AddScoped<IJobService, JobService>();
 builder.Services.AddScoped<IMqSender, MqSender>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IJsonWebTokenService, JsonWebTokenService>();
 
 var app = builder.Build();
 app.UseDeveloperExceptionPage();
