@@ -11,6 +11,7 @@ namespace JobBoardAPI.Data
         public DbSet<Application> Applications => Set<Application>();
         public DbSet<Company> Companies => Set<Company>();
         public DbSet<Job> Jobs => Set<Job>();
+        public DbSet<User> Users => Set<User>();
 
         public JobBoardDbContext(DbContextOptions<JobBoardDbContext> options)
             : base(options)

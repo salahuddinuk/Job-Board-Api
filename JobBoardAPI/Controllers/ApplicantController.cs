@@ -11,11 +11,13 @@ namespace JobBoardAPI.Controllers
     {
         private readonly IApplicantService _applicantService;
         private readonly IMqSender _mq;
+        private readonly ILogger<ApplicantController> _logger;
 
-        public ApplicantController(IApplicantService applicantService, IMqSender mq)
+        public ApplicantController(IApplicantService applicantService, IMqSender mq, ILogger<ApplicantController> logger)
         {
             _applicantService = applicantService;
             _mq = mq;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -49,7 +51,10 @@ namespace JobBoardAPI.Controllers
         {
             try
             {
-                bool isSent=await _mq.SendMessageAsync(System.Text.Json.JsonSerializer.Serialize(applicantDto) );
+                var data = System.Text.Json.JsonSerializer.Serialize(applicantDto);
+                _logger.LogInformation("Create request received with data: " + data);
+
+                bool isSent=await _mq.SendMessageAsync(data);
                 return Ok(isSent);
 
                 //return Ok(await _applicantService.Create(applicantDto));

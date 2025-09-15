@@ -16,7 +16,7 @@ namespace JobBoardAPI.Services
         }
         public async Task<int> Create(ApplicantDto applicantDto)
         {
-            Applicant applicant = new Applicant(0, applicantDto.Name, applicantDto.Email, true);
+            Applicant applicant = new Applicant(0, applicantDto.Name, applicantDto.Email, applicantDto.IsActive);
 
             await _dbContext.Applicants.AddAsync(applicant);
             await _dbContext.SaveChangesAsync();
