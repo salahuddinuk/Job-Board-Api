@@ -4,10 +4,10 @@ namespace JobBoardAPI.Services
 {
     public interface IApplicantService
     {
-        Task<int> Create(ApplicantDto applicant);
-        Task<bool> Delete(int applicantId);
-        Task<IEnumerable<ApplicantDto>> GetAll();
-        Task<ApplicantDto> GetById(int applicantId);
-        Task<bool> UpdateStatus(int applicantId, bool isActive);
+        Task<int> CreateAsync(ApplicantDto applicant);
+        Task<bool> DeleteAsync(int applicantId);
+        Task<IEnumerable<ApplicantDto>> GetAllAsync();
+        Task<ApplicantDto> GetByIdAsync(int applicantId);
+        Task<bool> UpdateStatusAsync(int applicantId, bool isActive);
     }
 }

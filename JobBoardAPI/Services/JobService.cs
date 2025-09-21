@@ -17,7 +17,7 @@ namespace JobBoardAPI.Services
             _logger = logger;
         }
 
-        public async Task<int> Create(JobDto jobDto)
+        public async Task<int> CreateAsync(JobDto jobDto)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace JobBoardAPI.Services
         
         }
     
-        public async Task<bool> Delete(int jobId)
+        public async Task<bool> DeleteAsync(int jobId)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace JobBoardAPI.Services
                 return false;
             }
         }
-        public async Task<JobDto> GetById(int jobId)
+        public async Task<JobDto> GetByIdAsync(int jobId)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace JobBoardAPI.Services
                 return null;
             }
         }
-        public async Task<IEnumerable<JobDto>> GetAll()
+        public async Task<IEnumerable<JobDto>> GetAllAsync()
         {
             try
             {
@@ -115,7 +115,7 @@ namespace JobBoardAPI.Services
                 return null;
             }
         }
-        public async Task<IEnumerable<JobDto>> GetAllActive()
+        public async Task<IEnumerable<JobDto>> GetAllActiveAsync()
         {
             try
             {
@@ -140,7 +140,7 @@ namespace JobBoardAPI.Services
                 return null;
             }
         }
-        public async Task<bool> UpdateStatus(int jobId, int status)
+        public async Task<bool> UpdateStatusAsync(int jobId, int status)
         {
             try
             {

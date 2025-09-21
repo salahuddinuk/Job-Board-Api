@@ -5,10 +5,10 @@ namespace JobBoardAPI.Services
 {
     public interface IUserService
     {
-        Task<bool> Create(UserDto user);
-        Task<Dictionary<bool, string>> UpdatePassword(UserPasswordDto userPassword);
-        Task<bool> UpdateStatus(int userId, bool isActive);
-        Task<User> Authenticate(LoginDto login);
+        Task<bool> CreateAsync(UserDto user);
+        Task<Dictionary<bool, string>> UpdatePasswordAsync(UserPasswordDto userPassword);
+        Task<bool> UpdateStatusAsync(int userId, bool isActive);
+        Task<User> AuthenticateAsync(LoginDto login);
         
     }
 }

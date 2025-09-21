@@ -18,6 +18,7 @@ builder.Services.AddDbContext<JobBoardDbContext>(options =>
 
 
 
+
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -46,6 +47,8 @@ builder.Services.AddScoped<IJobService, JobService>();
 builder.Services.AddScoped<IMqSender, MqSender>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IJsonWebTokenService, JsonWebTokenService>();
+
+//builder.Services.AddHostedService<Worker>();
 
 var app = builder.Build();
 app.UseDeveloperExceptionPage();

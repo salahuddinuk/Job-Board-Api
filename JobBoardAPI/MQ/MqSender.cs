@@ -51,7 +51,7 @@ namespace JobBoardAPI.MQSender
             }
             catch (Exception ex)
             {
-                _logger.LogError("Exception on Sender > "+ ex.Message);
+                _logger.LogError("Exception on SendMessageAsync > " + ex.Message);
                 return false;
             }
         }

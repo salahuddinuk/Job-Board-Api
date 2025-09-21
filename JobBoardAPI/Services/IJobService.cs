@@ -4,11 +4,11 @@ namespace JobBoardAPI.Services
 {
     public interface IJobService
     {
-        Task<int> Create(JobDto jobDto);
-        Task<bool> Delete(int jobId);
-        Task<JobDto> GetById(int jobId);
-        Task<IEnumerable<JobDto>> GetAll();
-        Task<IEnumerable<JobDto>> GetAllActive();
-        Task<bool> UpdateStatus(int jobId, int Status);
+        Task<int> CreateAsync(JobDto jobDto);
+        Task<bool> DeleteAsync(int jobId);
+        Task<JobDto> GetByIdAsync(int jobId);
+        Task<IEnumerable<JobDto>> GetAllAsync();
+        Task<IEnumerable<JobDto>> GetAllActiveAsync();
+        Task<bool> UpdateStatusAsync(int jobId, int Status);
     }
 }

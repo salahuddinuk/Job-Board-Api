@@ -1,9 +1,11 @@
 ﻿using JobBoardAPI.Dtos;
 using JobBoardAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobBoardAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class JobController : ControllerBase
@@ -20,7 +22,7 @@ namespace JobBoardAPI.Controllers
         {
             try
             {
-                return Ok(await _jobService.GetAll());
+                return Ok(await _jobService.GetAllAsync());
             }
             catch (Exception ex)
             {
@@ -33,7 +35,7 @@ namespace JobBoardAPI.Controllers
         {
             try
             {
-                return Ok(await _jobService.GetById(id));
+                return Ok(await _jobService.GetByIdAsync(id));
             }
             catch (Exception ex)
             {
@@ -46,7 +48,7 @@ namespace JobBoardAPI.Controllers
         {
             try
             {
-                return Ok(await _jobService.Create(jobDto));
+                return Ok(await _jobService.CreateAsync(jobDto));
             }
             catch (Exception ex)
             {
@@ -59,7 +61,7 @@ namespace JobBoardAPI.Controllers
         {
             try
             {
-                return Ok(await _jobService.UpdateStatus(status.Id, status.Status));
+                return Ok(await _jobService.UpdateStatusAsync(status.Id, status.Status));
             }
             catch (Exception ex)
             {
@@ -72,7 +74,7 @@ namespace JobBoardAPI.Controllers
         {
             try
             {
-                return Ok(await _jobService.Delete(jobId));
+                return Ok(await _jobService.DeleteAsync(jobId));
             }
             catch (Exception ex)
             {

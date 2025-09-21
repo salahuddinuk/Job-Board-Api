@@ -14,7 +14,7 @@ namespace JobBoardAPI.Services
             _dbContext = context;
             _logger = logger;
         }
-        public async Task<int> Create(ApplicantDto applicantDto)
+        public async Task<int> CreateAsync(ApplicantDto applicantDto)
         {
             Applicant applicant = new Applicant(0, applicantDto.Name, applicantDto.Email, applicantDto.IsActive);
 
@@ -24,7 +24,7 @@ namespace JobBoardAPI.Services
             _logger.LogInformation("CreateApplicant with Id: " + applicant.ApplicantId);
             return applicant.ApplicantId;
         }
-        public async Task<bool> Delete(int applicantId)
+        public async Task<bool> DeleteAsync(int applicantId)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace JobBoardAPI.Services
                 return false;
             }
         }
-        public async Task<IEnumerable<ApplicantDto>> GetAll()
+        public async Task<IEnumerable<ApplicantDto>> GetAllAsync()
         {
             try
             {
@@ -62,7 +62,7 @@ namespace JobBoardAPI.Services
                 return null;
             }
         }
-        public async Task<ApplicantDto> GetById(int applicantId)
+        public async Task<ApplicantDto> GetByIdAsync(int applicantId)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace JobBoardAPI.Services
                 return null;
             }
         }
-        public async Task<bool> UpdateStatus(int  applicantId, bool status)
+        public async Task<bool> UpdateStatusAsync(int  applicantId, bool status)
         {
             try
             {

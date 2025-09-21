@@ -15,7 +15,7 @@ namespace JobBoardAPI.Services
             _logger = logger;
         }
 
-        public async Task<bool> Create(UserDto userDto)
+        public async Task<bool> CreateAsync(UserDto userDto)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace JobBoardAPI.Services
                 return false;
             }
         }
-        public async Task<Dictionary<bool, string>> UpdatePassword(UserPasswordDto dto)
+        public async Task<Dictionary<bool, string>> UpdatePasswordAsync(UserPasswordDto dto)
         {
             Dictionary<bool, string> resultValue = new Dictionary<bool, string>();
             try
@@ -59,7 +59,7 @@ namespace JobBoardAPI.Services
                 return resultValue;
             }
         }
-        public async Task<bool> UpdateStatus(int id, bool isActive)
+        public async Task<bool> UpdateStatusAsync(int id, bool isActive)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace JobBoardAPI.Services
                 return false;
             }
         }
-        public async Task<User> Authenticate(LoginDto loginDto)
+        public async Task<User> AuthenticateAsync(LoginDto loginDto)
         {
             try
             {

@@ -5,13 +5,11 @@ namespace JobBoardAPI.Services
 {
     public interface ICompanyService
     {
-        Task<int> Create(CompanyDto company);
-
-        Task<bool> Delete(int companyId);
-        Task<IEnumerable<CompanyDto>> GetAll();
-        Task<CompanyDto> GetById(int companyId);
-        Task<CompanyDto> GetByName(string companyName);
-        Task<bool> UpdateStatus(int companyId, bool isActive);
-
+        Task<int> CreateAsync(CompanyDto company);
+        Task<bool> DeleteAsync(int companyId);
+        Task<IEnumerable<CompanyDto>> GetAllAsync();
+        Task<CompanyDto> GetByIdAsync(int companyId);
+        Task<CompanyDto> GetByNameAsync(string companyName);
+        Task<bool> UpdateStatusAsync(int companyId, bool isActive);
     }
 }

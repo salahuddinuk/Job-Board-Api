@@ -1,4 +1,6 @@
-﻿using JobBoardAPI.Models;
+﻿using JobBoardAPI.Dtos;
+using JobBoardAPI.Models;
+using JobBoardAPI.MQ;
 using JobBoardAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,13 +8,13 @@ namespace JobBoardAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoginController : ControllerBase
+    public class SignUpController : ControllerBase
     {
         private readonly IUserService _userService;
         private readonly IJsonWebTokenService _tokenService;
         private readonly ILogger<LoginController> _logger;
 
-        public LoginController(IUserService userService, IJsonWebTokenService tokenService, ILogger<LoginController> logger)
+        public SignUpController(IUserService userService, IJsonWebTokenService tokenService, IMqSender mq, ILogger<LoginController> logger)
         {
             _userService = userService;
             _tokenService = tokenService;
@@ -20,18 +22,17 @@ namespace JobBoardAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] LoginDto login)
+        public async Task<IActionResult> SignUp([FromBody] UserDto user)
         {
             try
-            {
-                User user = await _userService.AuthenticateAsync(login);
-
-                if (user != null)
+            {         
+                bool isCreated = await _userService.CreateAsync(user);
+                if (isCreated)
                 {                   
-                    return Ok(new { accessToken = _tokenService.Generate(user) });
+                    return Ok(true);
                 }
 
-                return Unauthorized();
+                return BadRequest();
             }
             catch (Exception ex)
             {
